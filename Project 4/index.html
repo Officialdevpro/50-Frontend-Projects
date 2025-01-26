@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      min-height: 100vh;
+      background: rgb(110, 0, 255);
+      background: radial-gradient(
+        circle,
+        rgba(110, 0, 255, 0.7625175070028012) 0%,
+        rgba(0, 237, 255, 1) 100%
+      );
+    }
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 8px;
+      width: 50px;
+      background-color: #fff;
+      height: 50px;
+      transition: transform 0.5s ease;
+      color: #6d6d6d;
+      border-radius: 10px;
+    }
+
+    .search-bar {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    input {
+      width: 50px;
+      height: 50px;
+      transition: all 0.5s linear;
+      padding-left: 10px;
+      font-size: 18px;
+      transition: width 0.5s ease;
+      border: none;
+      border-radius: 10px;
+    }
+    input:focus {
+      outline: none;
+    }
+    .search-bar.active input {
+      width: 400px;
+    }
+    .search-bar.active svg {
+      transform: translateX(350px);
+    }
+    @media (max-width: 480px) {
+      .search-bar.active input {
+        width: 300px;
+      }
+      .search-bar.active svg {
+        transform: translateX(250px);
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="search-bar">
+        <input type="text" placeholder="Search.." />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-search"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+          <path d="M21 21l-6 -6" />
+        </svg>
+      </div>
+    </div>
+    <script>
+      let icon = document.querySelector("svg");
+      icon.addEventListener("click", () => {
+        document.querySelector(".search-bar").classList.toggle("active");
+        if (
+          document.querySelector(".search-bar").classList.contains("active")
+        ) {
+          document.querySelector("input").focus();
+        }
+      });
+    </script>
+  </body>
+</html>
