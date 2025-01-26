@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blurry Loading</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+    * {
+      margin: 0;
+      padding: 0%;
+      box-sizing: border-box;
+      font-family: "Poppins";
+    }
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url("./assets/images/img.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      filter: blur(0px);
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+    }
+    .loading-text {
+      font-size: 50px;
+      color: #fff;
+    }
+  </style>
+  <body>
+    <section class="bg"></section>
+    <div class="loading-text">0%</div>
+
+    <script>
+      const loadText = document.querySelector(".loading-text");
+      const bg = document.querySelector(".bg");
+
+      let int = setInterval(() => {
+        blurring();
+      }, 30);
+      let load = 0;
+      function blurring() {
+        load++;
+        if (load > 99) {
+          clearInterval(int);
+        }
+        loadText.innerHTML = `${load}%`;
+        loadText.style.opacity = scale(load, 0, 100, 1, 0);
+        bg.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`;
+      }
+
+      const scale = (num, in_min, in_max, out_min, out_max) => {
+        return (
+          ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+        );
+      };
+    </script>
+  </body>
+</html>
