@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0%;
+      box-sizing: border-box;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #333;~
+      text-align: center;
+      color: #fff;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .boxs {
+      display: flex;
+      gap: 20px;
+    }
+    .code {
+      width: 80px;
+      height: 80px;
+      text-align: center;
+      outline: none;
+      border: none;
+      font-size: 40px;
+      border-radius: 5px;
+    }
+    button {
+      width: 200px;
+      height: 50px;
+      border: none;
+      outline: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+  
+  </style>
+  <body>
+    <div class="container">
+      <p>We have send a OTP to registered phone number</p>
+      <div class="boxs">
+        <input type="tel" placeholder="0" class="code" />
+        <input type="tel" placeholder="0" class="code" />
+        <input type="tel" placeholder="0" class="code" />
+        <input type="tel" placeholder="0" class="code" />
+        <input type="tel" placeholder="0" class="code" />
+        <input type="tel" placeholder="0" class="code" />
+      </div>
+      <p><a style="color: white" href="">Don't receive an OTP?</a></p>
+      <button>SUBMIT</button>
+    </div>
+
+    <script>
+      let codes = document.querySelectorAll('.code')
+      codes[0].focus()
+
+      codes.forEach((code, indx) =>{
+          code.addEventListener("keydown", (e)=>{
+              if(e.key >=0 && e.key <=9){
+                codes[indx].value = ''
+                  setTimeout(()=>codes[indx + 1].focus(), 10)
+              }
+              else if(e.key === 'Backspace'){
+                setTimeout(()=>codes[indx - 1].focus(), 10)
+            }  
+          })
+      })
+    </script>
+  </body>
+</html>
