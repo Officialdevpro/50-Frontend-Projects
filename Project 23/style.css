@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(255, 64, 0);
+  background-color: rgb(255, 85, 0);
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ body {
 div {
   position: absolute;
   bottom: 20px;
-  background: rgb(255, 255, 255);
+  background: rgb(74, 68, 68);
   padding: 10px 20px;
   font-size: 18px;
 }
